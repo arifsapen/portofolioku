@@ -1439,13 +1439,38 @@
             }, 1600);
         }
     </script>
-    fetch('./content/profile.json')
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('hero-name').innerText = data.name;
-    document.getElementById('hero-role').innerText = data.role;
-    document.getElementById('hero-bio').innerText = data.bio;
-    // Loop untuk menampilkan daftar proyek secara dinamis
-  });
+   <script>
+  // Mengambil data dari content/profile.json secara otomatis
+  fetch('./content/profile.json')
+    .then(response => response.json())
+    .then(data => {
+      // 1. Update Teks Hero & Profil
+      if(document.querySelector('.hero-title')) {
+        document.querySelector('.hero-title').innerText = data.name;
+      }
+      if(document.querySelector('.hero-subtitle')) {
+        document.querySelector('.hero-subtitle').innerText = data.role;
+      }
+      if(document.querySelector('.about-bio')) {
+        document.querySelector('.about-bio').innerText = data.bio;
+      }
+
+      // 2. Render Daftar Proyek secara Dinamis
+      const projectContainer = document.getElementById('project-grid');
+      if(projectContainer && data.projects) {
+        projectContainer.innerHTML = data.projects.map(p => `
+          <div class="project-card" data-category="${p.category}">
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+            <div class="tech-tags">
+              ${p.tech ? p.tech.map(t => `<span class="tag">${t}</span>`).join('') : ''}
+            </div>
+            <a href="${p.link}" target="_blank" class="cyber-btn-sm">Lihat Detail</a>
+          </div>
+        `).join('');
+      }
+    })
+    .catch(err => console.error('Gagal memuat data profil:', err));
+</script>
 </body>
 </html>
