@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: USERNAME_KAMU/NAMA_REPOSITORI
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "profile_data"
+    label: "Edit Data Profil"
+    files:
+      - file: "content/profile.json"
+        label: "Informasi Utama & Proyek"
+        name: "profile"
+        fields:
+          - { label: "Nama Lengkap", name: "name", widget: "string" }
+          - { label: "Sub-Judul / Role", name: "role", widget: "string" }
+          - { label: "Biografi Singkat", name: "bio", widget: "text" }
+          - { label: "Status Pekerjaan", name: "status", widget: "string" }
+          - label: "Informasi Kontak"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Discord Tag", name: "discord", widget: "string" }
+              - { label: "URL GitHub", name: "github", widget: "string" }
+              - { label: "URL LinkedIn", name: "linkedin", widget: "string" }
+          - label: "Daftar Proyek"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Judul Proyek", name: "title", widget: "string" }
+              - { label: "Kategori (web/ai/mobile)", name: "category", widget: "string" }
+              - { label: "Deskripsi", name: "desc", widget: "text" }
+              - { label: "Link Proyek", name: "link", widget: "string" }
