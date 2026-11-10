@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: USERNAME_KAMU/NAMA_REPOSITORI
+  repo: arifsapen.github.io/portofolioku
   branch: main
 
 media_folder: "assets/uploads"
