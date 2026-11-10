@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Thorne — Portofolio & Profil Futuristis</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#090d16',
+                            card: '#0e172a',
+                            border: '#1e293b',
+                            cyan: '#00f3ff',
+                            purple: '#a855f7',
+                            pink: '#ec4899',
+                            green: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 25px -2px rgba(0, 243, 255, 0.4)',
+                        'neon-purple': '0 0 25px -2px rgba(168, 85, 247, 0.4)',
+                        'neon-pink': '0 0 25px -2px rgba(236, 72, 153, 0.4)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'float': 'float 5s ease-in-out infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { filter: 'drop-shadow(0 0 10px rgba(0,243,255,0.3))' },
+                            '100%': { filter: 'drop-shadow(0 0 25px rgba(168,85,247,0.7))' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' }
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Styles -->
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+            box-shadow: 0 0 10px #00f3ff;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(14, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-interactive {
+            background: rgba(14, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel-interactive:hover {
+            background: rgba(20, 32, 60, 0.85);
+            border-color: rgba(0, 243, 255, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 243, 255, 0.25);
+        }
+
+        /* Text Gradients */
+        .text-gradient-cyan {
+            background: linear-gradient(135deg, #00f3ff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-full {
+            background: linear-gradient(135deg, #00f3ff 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cyber Grid Background Pattern */
+        .cyber-grid-bg {
+            background-image: 
+                radial-gradient(rgba(0, 243, 255, 0.07) 1px, transparent 0),
+                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 32px 32px, 64px 64px, 64px 64px;
+        }
+
+        /* Cursor Custom Glow Trail */
+        #cursor-glow {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.08) 0%, rgba(168, 85, 247, 0.04) 40%, rgba(0,0,0,0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: transform 0.04s ease-out;
+        }
+
+        /* Scanline HUD Overlay Effect */
+        .scanlines {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 2;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        /* Circuit Node Connector */
+        .circuit-line {
+            background: linear-gradient(180deg, #00f3ff 0%, #a855f7 50%, #ec4899 100%);
+        }
+    </style>
+</head>
+<body class="cyber-grid-bg antialiased selection:bg-cyber-cyan selection:text-black">
+
+    <!-- Interactive Mouse Follower Glow -->
+    <div id="cursor-glow" class="hidden md:block"></div>
+
+    <!-- Background Particle Canvas -->
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- HEADER & NAVBAR FLOATING GLASS PANEL -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 py-4 md:py-5">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#hero" class="group flex items-center gap-2 font-mono text-lg font-extrabold tracking-widest text-white">
+                <span class="w-3 h-3 rounded-full bg-cyber-cyan shadow-[0_0_12px_#00f3ff] animate-ping"></span>
+                <span class="text-cyber-cyan">&lt;AT/&gt;</span>
+                <span class="group-hover:text-cyber-cyan transition-colors">ALEX.DEV</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-1 glass-panel px-5 py-2 rounded-full text-xs font-mono tracking-wide text-slate-300 shadow-glass">
+                <a href="#about" class="px-4 py-2 rounded-full hover:text-cyber-cyan hover:bg-slate-800/60 transition-all">01. TENTANG</a>
+                <a href="#skills" class="px-4 py-2 rounded-full hover:text-cyber-cyan hover:bg-slate-800/60 transition-all">02. KEAHLIAN</a>
+                <a href="#projects" class="px-4 py-2 rounded-full hover:text-cyber-cyan hover:bg-slate-800/60 transition-all">03. PORTOFOLIO</a>
+                <a href="#experience" class="px-4 py-2 rounded-full hover:text-cyber-cyan hover:bg-slate-800/60 transition-all">04. KARIR</a>
+                <a href="#contact" class="px-4 py-2 rounded-full hover:text-cyber-cyan hover:bg-slate-800/60 transition-all">05. KONTAK</a>
+            </nav>
+
+            <!-- Status Indicator CTA Button -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="#contact" class="relative group px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider text-black bg-cyber-cyan hover:bg-white transition-all shadow-neon-cyan duration-300 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+                    <span>SIAP BEKERJA</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden glass-panel p-2.5 rounded-xl text-slate-300 hover:text-cyber-cyan focus:outline-none">
+                <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden max-w-6xl mx-auto mt-3 glass-panel rounded-2xl p-6 flex-col gap-4 border border-slate-700/60 shadow-2xl transition-all">
+            <a href="#about" class="mobile-link text-slate-300 hover:text-cyber-cyan font-mono py-2 text-sm border-b border-slate-800">01. TENTANG SAYA</a>
+            <a href="#skills" class="mobile-link text-slate-300 hover:text-cyber-cyan font-mono py-2 text-sm border-b border-slate-800">02. TECH STACK</a>
+            <a href="#projects" class="mobile-link text-slate-300 hover:text-cyber-cyan font-mono py-2 text-sm border-b border-slate-800">03. SHOWCASE PROYEK</a>
+            <a href="#experience" class="mobile-link text-slate-300 hover:text-cyber-cyan font-mono py-2 text-sm border-b border-slate-800">04. JEJAK KARIR</a>
+            <a href="#contact" class="mobile-link text-slate-300 hover:text-cyber-cyan font-mono py-2 text-sm border-b border-slate-800">05. HUBUNGI SAYA</a>
+            <a href="#contact" class="w-full text-center mt-2 py-3 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-purple text-black font-mono font-extrabold text-xs">HUBUNGI SEKARANG</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 pt-28 pb-16 space-y-32">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-[85vh] flex flex-col justify-center relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Availability Pill Badge -->
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border border-emerald-500/30 text-xs font-mono text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.25)]">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>TERSEDIA UNTUK PROYEK FREELANCE & KONTRAK</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+                        Membangun Masa Depan <br>
+                        <span class="text-gradient-full">Ekosistem Digital</span>
+                    </h1>
+
+                    <!-- Typewriter Role Dynamic Text -->
+                    <div class="text-lg sm:text-2xl font-mono text-slate-400 flex items-center gap-2 h-8">
+                        <span class="text-cyber-cyan font-bold">&gt;</span>
+                        <span id="typewriter" class="text-slate-100 font-semibold"></span>
+                        <span class="w-2.5 h-6 bg-cyber-purple animate-pulse"></span>
+                    </div>
+
+                    <!-- Intro Description -->
+                    <p class="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed">
+                        Pengembang web full-stack dan spesialis UI/UX futuristik. Berfokus pada performa kode tingkat tinggi, estetika visual cyberpunk glassmorphism, dan arsitektur aplikasi berskala global.
+                    </p>
+
+                    <!-- CTAs & Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#projects" class="px-8 py-4 rounded-xl font-mono font-bold text-xs tracking-wider bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink text-black shadow-neon-cyan hover:scale-[1.03] transition-transform duration-200 flex items-center gap-2">
+                            <span>LIHAT PORTOFOLIO</span>
+                            <i class="fa-solid fa-code"></i>
+                        </a>
+
+                        <a href="#contact" class="px-8 py-4 rounded-xl font-mono font-bold text-xs tracking-wider glass-panel hover:border-cyber-cyan text-slate-200 hover:text-white transition-all flex items-center gap-2">
+                            <span>MULAI DISKUSI</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </a>
+                    </div>
+
+                    <!-- Quick Metrics Counter -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-md">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-white counter" data-target="4">0</div>
+                            <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-1">Tahun Pengalaman</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-cyber-cyan counter" data-target="35">0</div>
+                            <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-1">Proyek Selesai</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-cyber-purple counter" data-target="99">0</div>
+                            <div class="text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-1">% Kepuasan Klien</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Hero Right Column: Cyber Avatar HUD Frame -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    
+                    <!-- Ambient Glow Elements -->
+                    <div class="absolute -top-10 -left-10 w-72 h-72 bg-cyber-cyan/20 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-10 -right-10 w-72 h-72 bg-cyber-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Interactive Glass Card Container -->
+                    <div class="relative w-full max-w-sm glass-panel p-6 rounded-3xl border border-slate-700/60 shadow-2xl animate-float">
+                        
+                        <!-- Header Status bar -->
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-800 text-xs font-mono text-slate-400">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-circle-dot text-cyber-cyan animate-pulse"></i> SYS.STATUS: ONLINE</span>
+                            <span class="text-cyber-purple">VER 3.0.4</span>
+                        </div>
+
+                        <!-- Scanline Graphic Visual Container -->
+                        <div class="relative my-6 aspect-square rounded-2xl overflow-hidden border border-slate-700/80 group scanlines">
+                            
+                            <!-- Spinning Outer HUD Ring -->
+                            <div class="absolute inset-0 border-2 border-dashed border-cyber-cyan/40 rounded-2xl animate-spin-slow pointer-events-none"></div>
+
+                            <!-- Avatar Image with Contrast Overlay -->
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Alex Thorne Avatar" 
+                                 class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x600/0e172a/00f3ff?text=CYBER+AVATAR';">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-transparent to-transparent opacity-90"></div>
+
+                            <!-- Futuristic Overlay Grid Tags -->
+                            <div class="absolute inset-0 border border-cyber-cyan/20 m-3 rounded-xl pointer-events-none flex flex-col justify-between p-3">
+                                <div class="flex justify-between text-[10px] font-mono text-cyber-cyan font-bold">
+                                    <span>ID: #DEV-8890</span>
+                                    <span>LOKASI: YOGYAKARTA</span>
+                                </div>
+                                <div class="flex justify-between text-[10px] font-mono text-cyber-purple font-bold">
+                                    <span>MODE: FULL-STACK</span>
+                                    <span>CYBER UX</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Skill Badges Grid -->
+                        <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                            <div class="glass-panel p-2.5 rounded-xl flex items-center gap-2 border-slate-800">
+                                <i class="fa-brands fa-react text-cyber-cyan text-base"></i>
+                                <span class="text-slate-300">Frontend Dev</span>
+                            </div>
+                            <div class="glass-panel p-2.5 rounded-xl flex items-center gap-2 border-slate-800">
+                                <i class="fa-brands fa-node-js text-emerald-400 text-base"></i>
+                                <span class="text-slate-300">Backend System</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 01: TENTANG SAYA -->
+        <section id="about" class="space-y-10">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <span class="text-cyber-cyan font-mono text-xs tracking-widest uppercase">&lt;SEKSI_01&gt;</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1">Tentang Saya</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md">
+                    Dedikasi tinggi terhadap seni rekayasa perangkat lunak modern, performa interaksi 60fps, dan estetika antarmuka masa depan.
+                </p>
+            </div>
+
+            <!-- Feature Highlight Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="glass-panel p-6 rounded-2xl space-y-4 relative overflow-hidden group hover:border-cyber-cyan/40 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-xl">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Kode Clean & Terstruktur</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Menulis sintaks modular dengan TypeScript dan arsitektur komponen scalable yang mudah dipelihara serta siap untuk performa tinggi.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl space-y-4 relative overflow-hidden group hover:border-cyber-purple/40 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-cyber-purple/10 border border-cyber-purple/30 flex items-center justify-center text-cyber-purple text-xl">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Cyber UI/UX Interactive</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Mengombinasikan efek visual glassmorphic, animasi micro-interaction halus, dan konsistensi skema warna neon yang memikat mata pengguna.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl space-y-4 relative overflow-hidden group hover:border-cyber-pink/40 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-cyber-pink/10 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-xl">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">Solusi End-to-End Cloud</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Mengintegrasikan RESTful API, database teroptimasi, containerization Docker, serta otomatisasi pipeline deployment CI/CD.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION 02: TECH STACK & KEAHLIAN -->
+        <section id="skills" class="space-y-10">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <span class="text-cyber-purple font-mono text-xs tracking-widest uppercase">&lt;SEKSI_02&gt;</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1">Tech Stack & Keahlian</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md">
+                    Gunakan filter kategori di bawah untuk mengeksplorasi penguasaan teknologi modern yang saya gunakan.
+                </p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap items-center gap-2 border-b border-slate-800/80 pb-4">
+                <button class="tech-filter-btn px-4 py-2 rounded-xl font-mono text-xs font-bold transition-all bg-cyber-cyan text-black" data-category="all">
+                    SEMUA KEAHLIAN (12)
+                </button>
+                <button class="tech-filter-btn px-4 py-2 rounded-xl font-mono text-xs font-bold transition-all glass-panel text-slate-300 hover:text-white" data-category="frontend">
+                    FRONTEND
+                </button>
+                <button class="tech-filter-btn px-4 py-2 rounded-xl font-mono text-xs font-bold transition-all glass-panel text-slate-300 hover:text-white" data-category="backend">
+                    BACKEND & DB
+                </button>
+                <button class="tech-filter-btn px-4 py-2 rounded-xl font-mono text-xs font-bold transition-all glass-panel text-slate-300 hover:text-white" data-category="tools">
+                    DESIGN & TOOLS
+                </button>
+            </div>
+
+            <!-- Skill Cards Grid with Progress Bars -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="tech-grid">
+                
+                <!-- React.js -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="frontend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-react text-3xl text-cyber-cyan"></i>
+                            <span class="font-bold text-white text-sm">React.js</span>
+                        </div>
+                        <span class="font-mono text-xs text-cyber-cyan font-bold">95%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-cyber-cyan to-blue-500 h-full rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <!-- Next.js -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="frontend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-N text-2xl font-black text-white"></i>
+                            <span class="font-bold text-white text-sm">Next.js 14</span>
+                        </div>
+                        <span class="font-mono text-xs text-cyber-purple font-bold">90%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-cyber-purple to-purple-400 h-full rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <!-- TypeScript -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="frontend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-js text-3xl text-yellow-400"></i>
+                            <span class="font-bold text-white text-sm">TypeScript</span>
+                        </div>
+                        <span class="font-mono text-xs text-yellow-400 font-bold">92%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-yellow-400 h-full rounded-full" style="width: 92%"></div>
+                    </div>
+                </div>
+
+                <!-- Tailwind CSS -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="frontend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-wind text-2xl text-cyber-cyan"></i>
+                            <span class="font-bold text-white text-sm">Tailwind CSS</span>
+                        </div>
+                        <span class="font-mono text-xs text-cyber-cyan font-bold">98%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-cyber-cyan h-full rounded-full" style="width: 98%"></div>
+                    </div>
+                </div>
+
+                <!-- Node.js -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="backend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-node-js text-3xl text-emerald-400"></i>
+                            <span class="font-bold text-white text-sm">Node.js / Express</span>
+                        </div>
+                        <span class="font-mono text-xs text-emerald-400 font-bold">88%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-emerald-400 h-full rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+
+                <!-- Python -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="backend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-python text-3xl text-blue-400"></i>
+                            <span class="font-bold text-white text-sm">Python / FastAPI</span>
+                        </div>
+                        <span class="font-mono text-xs text-blue-400 font-bold">85%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-blue-400 h-full rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- PostgreSQL -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="backend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-database text-2xl text-cyber-purple"></i>
+                            <span class="font-bold text-white text-sm">PostgreSQL / Redis</span>
+                        </div>
+                        <span class="font-mono text-xs text-cyber-purple font-bold">86%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-cyber-purple h-full rounded-full" style="width: 86%"></div>
+                    </div>
+                </div>
+
+                <!-- Docker -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="tools">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-docker text-3xl text-blue-500"></i>
+                            <span class="font-bold text-white text-sm">Docker & DevOps</span>
+                        </div>
+                        <span class="font-mono text-xs text-blue-500 font-bold">82%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full rounded-full" style="width: 82%"></div>
+                    </div>
+                </div>
+
+                <!-- AWS Cloud -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="tools">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-aws text-3xl text-amber-400"></i>
+                            <span class="font-bold text-white text-sm">AWS Cloud Services</span>
+                        </div>
+                        <span class="font-mono text-xs text-amber-400 font-bold">80%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-amber-400 h-full rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <!-- Figma -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="tools">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-figma text-3xl text-pink-400"></i>
+                            <span class="font-bold text-white text-sm">Figma Cyber UI/UX</span>
+                        </div>
+                        <span class="font-mono text-xs text-pink-400 font-bold">90%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-pink-400 h-full rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <!-- Git GitHub -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="tools">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-github text-3xl text-slate-200"></i>
+                            <span class="font-bold text-white text-sm">Git & GitHub Actions</span>
+                        </div>
+                        <span class="font-mono text-xs text-slate-300 font-bold">95%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-slate-300 h-full rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <!-- GraphQL -->
+                <div class="tech-card glass-panel-interactive p-5 rounded-2xl space-y-3" data-category="backend">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-diagram-project text-2xl text-cyber-pink"></i>
+                            <span class="font-bold text-white text-sm">GraphQL API</span>
+                        </div>
+                        <span class="font-mono text-xs text-cyber-pink font-bold">78%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-cyber-pink h-full rounded-full" style="width: 78%"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION 03: SHOWCASE PORTOFOLIO PROYEK -->
+        <section id="projects" class="space-y-10">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <span class="text-cyber-pink font-mono text-xs tracking-widest uppercase">&lt;SEKSI_03&gt;</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1">Portofolio Proyek</h2>
+                </div>
+                
+                <!-- Project Filter Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="proj-filter-btn px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-cyber-pink text-black transition-all" data-proj="all">SEMUA</button>
+                    <button class="proj-filter-btn px-3 py-1.5 rounded-lg font-mono text-xs font-bold glass-panel text-slate-300 hover:text-white transition-all" data-proj="web">APLIKASI WEB</button>
+                    <button class="proj-filter-btn px-3 py-1.5 rounded-lg font-mono text-xs font-bold glass-panel text-slate-300 hover:text-white transition-all" data-proj="ai">AI & AUTOMASI</button>
+                    <button class="proj-filter-btn px-3 py-1.5 rounded-lg font-mono text-xs font-bold glass-panel text-slate-300 hover:text-white transition-all" data-proj="ui">DESAIN UI/UX</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="proj-card glass-panel rounded-2xl overflow-hidden border border-slate-800 group hover:border-cyber-cyan/50 transition-all duration-300 flex flex-col justify-between" data-type="ai">
+                    <div>
+                        <!-- Vector SVG Preview Canvas Frame -->
+                        <div class="relative overflow-hidden aspect-video bg-slate-950 flex items-center justify-center p-4">
+                            <!-- Futuristic SVG Illustration -->
+                            <svg class="w-full h-full text-cyber-cyan opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="200" fill="#090d16"/>
+                                <circle cx="200" cy="100" r="60" stroke="#00f3ff" stroke-width="2" stroke-dasharray="4 4" class="animate-spin-slow"/>
+                                <circle cx="200" cy="100" r="40" fill="url(#grad1)" opacity="0.4"/>
+                                <path d="M100 100 L160 100 M240 100 L300 100 M200 40 L200 60 M200 140 L200 160" stroke="#a855f7" stroke-width="2"/>
+                                <defs>
+                                    <radialGradient id="grad1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(200 100) scale(40)">
+                                        <stop stop-color="#00f3ff"/>
+                                        <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-md glass-panel font-mono text-[10px] text-cyber-cyan border border-cyber-cyan/30">AI & AUTOMASI</span>
+                        </div>
+                        
+                        <!-- Content Body -->
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyber-cyan transition-colors">Aether AI Studio</h3>
+                            <p class="text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                                Platform AI generatif untuk sintesis gambar resolusi tinggi dengan kontrol prompt terintegrasi dan live WebSockets.
+                            </p>
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[11px]">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Next.js 14</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">FastAPI</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">PyTorch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions Footer -->
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-800/60">
+                        <button onclick="openModal('Aether AI Studio', 'Aether AI Studio adalah sistem terintegrasi yang memanfaatkan kecerdasan buatan untuk menghasilkan aset visual secara real-time. Dilengkapi antarmuka cyberpunk intuitif dan dashboard analisis statistik pembuatan aset.', ['Next.js 14', 'TypeScript', 'FastAPI', 'Redis', 'TailwindCSS'], 'ai')" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1">
+                            <span>DETAIL PROYEK</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                        <div class="flex gap-3 text-slate-400">
+                            <a href="#" class="hover:text-white transition-colors" title="GitHub Repo"><i class="fa-brands fa-github text-lg"></i></a>
+                            <a href="#" class="hover:text-cyber-cyan transition-colors" title="Live Preview"><i class="fa-solid fa-globe text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="proj-card glass-panel rounded-2xl overflow-hidden border border-slate-800 group hover:border-cyber-purple/50 transition-all duration-300 flex flex-col justify-between" data-type="web">
+                    <div>
+                        <!-- Vector SVG Preview Canvas Frame -->
+                        <div class="relative overflow-hidden aspect-video bg-slate-950 flex items-center justify-center p-4">
+                            <svg class="w-full h-full text-cyber-purple opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="200" fill="#090d16"/>
+                                <path d="M50 150 L120 100 L180 130 L260 60 L350 110" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="260" cy="60" r="6" fill="#00f3ff" class="animate-ping"/>
+                                <rect x="50" y="30" width="80" height="40" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1"/>
+                                <rect x="150" y="30" width="80" height="40" rx="6" fill="#1e293b" stroke="#00f3ff" stroke-width="1"/>
+                            </svg>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-md glass-panel font-mono text-[10px] text-cyber-purple border border-cyber-purple/30">APLIKASI WEB</span>
+                        </div>
+                        
+                        <!-- Content Body -->
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyber-purple transition-colors">CyberVault DEX Terminal</h3>
+                            <p class="text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                                Terminal perdagangan aset kripto dan Web3 analytics real-time dengan grafik indikator teknik berkecepatan tinggi.
+                            </p>
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[11px]">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">React.js</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Ethers.js</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Recharts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions Footer -->
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-800/60">
+                        <button onclick="openModal('CyberVault DEX Terminal', 'CyberVault DEX adalah platform bursa terdesentralisasi modern yang menyediakan data pasar secara waktu-nyata, visualisasi portofolio interaktif, dan estimasi biaya gas otomatis.', ['React.js', 'Ethers.js', 'TailwindCSS', 'Web3.js'], 'web')" class="text-xs font-mono text-cyber-purple hover:underline flex items-center gap-1">
+                            <span>DETAIL PROYEK</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                        <div class="flex gap-3 text-slate-400">
+                            <a href="#" class="hover:text-white transition-colors" title="GitHub Repo"><i class="fa-brands fa-github text-lg"></i></a>
+                            <a href="#" class="hover:text-cyber-purple transition-colors" title="Live Preview"><i class="fa-solid fa-globe text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="proj-card glass-panel rounded-2xl overflow-hidden border border-slate-800 group hover:border-cyber-pink/50 transition-all duration-300 flex flex-col justify-between" data-type="ui">
+                    <div>
+                        <!-- Vector SVG Preview Canvas Frame -->
+                        <div class="relative overflow-hidden aspect-video bg-slate-950 flex items-center justify-center p-4">
+                            <svg class="w-full h-full text-cyber-pink opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="200" fill="#090d16"/>
+                                <rect x="40" y="30" width="320" height="140" rx="12" fill="#0e172a" stroke="#ec4899" stroke-width="2"/>
+                                <circle cx="70" cy="55" r="5" fill="#ec4899"/>
+                                <circle cx="90" cy="55" r="5" fill="#a855f7"/>
+                                <circle cx="110" cy="55" r="5" fill="#00f3ff"/>
+                                <rect x="60" y="80" width="120" height="70" rx="8" fill="#1e293b"/>
+                                <rect x="200" y="80" width="140" height="30" rx="6" fill="#1e293b"/>
+                                <rect x="200" y="120" width="90" height="30" rx="6" fill="#a855f7" opacity="0.6"/>
+                            </svg>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-md glass-panel font-mono text-[10px] text-cyber-pink border border-cyber-pink/30">DESAIN UI/UX</span>
+                        </div>
+                        
+                        <!-- Content Body -->
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyber-pink transition-colors">Nexus Dashboard System</h3>
+                            <p class="text-slate-400 text-sm line-clamp-2 leading-relaxed">
+                                Design System futuristik berbasis glassmorphic UI kit lengkap dengan 40+ komponen teruji untuk pengembang.
+                            </p>
+                            <!-- Tech Tags -->
+                            <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[11px]">
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Figma</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">UI Kit</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Design System</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions Footer -->
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-800/60">
+                        <button onclick="openModal('Nexus Dashboard System', 'Design system menyeluruh berorientasi futuristik. Dirancang khusus untuk kemudahan prototipe aplikasi web SaaS bertema cyberpunk & dark mode.', ['Figma', 'UI/UX Architecture', 'Design Tokens'], 'ui')" class="text-xs font-mono text-cyber-pink hover:underline flex items-center gap-1">
+                            <span>DETAIL PROYEK</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                        <div class="flex gap-3 text-slate-400">
+                            <a href="#" class="hover:text-white transition-colors" title="Figma Community"><i class="fa-brands fa-figma text-lg"></i></a>
+                            <a href="#" class="hover:text-cyber-pink transition-colors" title="Live Prototype"><i class="fa-solid fa-globe text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION 04: PENGALAMAN & EDUKASI TIMELINE -->
+        <section id="experience" class="space-y-10">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <span class="text-cyber-cyan font-mono text-xs tracking-widest uppercase">&lt;SEKSI_04&gt;</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1">Pengalaman & Karir</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md">
+                    Klik pada setiap node sirkuit untuk melihat pencapaian dan tanggung jawab utama.
+                </p>
+            </div>
+
+            <!-- Electronic Circuit Style Timeline Structure -->
+            <div class="relative border-l-2 circuit-line ml-4 md:ml-32 space-y-8">
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative pl-8 group">
+                    <!-- Circuit Node Dot -->
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyber-cyan border-4 border-cyber-bg group-hover:scale-150 transition-transform shadow-[0_0_12px_#00f3ff]"></div>
+                    
+                    <!-- Date Badge -->
+                    <div class="md:absolute md:-left-36 md:top-1 font-mono text-xs text-cyber-cyan font-bold bg-slate-900/90 px-3 py-1 rounded-full border border-slate-800 w-max mb-2 md:mb-0">
+                        2024 - SEKARANG
+                    </div>
+
+                    <!-- Accordion Card -->
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-3 cursor-pointer timeline-accordion" onclick="toggleTimeline(this)">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="text-lg font-bold text-white group-hover:text-cyber-cyan transition-colors">Senior Lead Frontend Engineer</h3>
+                                <p class="text-sm font-mono text-slate-400">TechNova Innovations Ltd.</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 accordion-arrow"></i>
+                        </div>
+
+                        <div class="accordion-content hidden pt-4 border-t border-slate-800/80 text-sm text-slate-300 space-y-2">
+                            <p>• Memimpin migrasi platform SaaS utama ke Next.js 14 Server Components yang meningkatkan kecepatan respon halaman hingga 45%.</p>
+                            <p>• Mengelola tim berisi 8 teknisi software dalam pengembangan fitur antarmuka interaktif dan integrasi Micro-Frontend.</p>
+                            <div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+                                <span class="px-2.5 py-1 rounded bg-slate-800 text-cyber-cyan">Next.js 14</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800 text-cyber-cyan">TypeScript</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800 text-cyber-cyan">GraphQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative pl-8 group">
+                    <!-- Circuit Node Dot -->
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyber-purple border-4 border-cyber-bg group-hover:scale-150 transition-transform shadow-[0_0_12px_#a855f7]"></div>
+                    
+                    <!-- Date Badge -->
+                    <div class="md:absolute md:-left-36 md:top-1 font-mono text-xs text-cyber-purple font-bold bg-slate-900/90 px-3 py-1 rounded-full border border-slate-800 w-max mb-2 md:mb-0">
+                        2022 - 2024
+                    </div>
+
+                    <!-- Accordion Card -->
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-3 cursor-pointer timeline-accordion" onclick="toggleTimeline(this)">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="text-lg font-bold text-white group-hover:text-cyber-purple transition-colors">Full-Stack Web Developer</h3>
+                                <p class="text-sm font-mono text-slate-400">CyberPulse Digital Studio</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 accordion-arrow"></i>
+                        </div>
+
+                        <div class="accordion-content hidden pt-4 border-t border-slate-800/80 text-sm text-slate-300 space-y-2">
+                            <p>• Membangun lebih dari 20 aplikasi web komersial berbasis React dan Node.js untuk klien internasional.</p>
+                            <p>• Mengimplementasikan optimasi query PostgreSQL dan sistem caching Redis yang meningkatkan performa backend secara signifikan.</p>
+                            <div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+                                <span class="px-2.5 py-1 rounded bg-slate-800 text-cyber-purple">React.js</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800 text-cyber-purple">Node.js</span>
+                                <span class="px-2.5 py-1 rounded bg-slate-800 text-cyber-purple">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative pl-8 group">
+                    <!-- Circuit Node Dot -->
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyber-pink border-4 border-cyber-bg group-hover:scale-150 transition-transform shadow-[0_0_12px_#ec4899]"></div>
+                    
+                    <!-- Date Badge -->
+                    <div class="md:absolute md:-left-36 md:top-1 font-mono text-xs text-cyber-pink font-bold bg-slate-900/90 px-3 py-1 rounded-full border border-slate-800 w-max mb-2 md:mb-0">
+                        2018 - 2022
+                    </div>
+
+                    <!-- Accordion Card -->
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-3 cursor-pointer timeline-accordion" onclick="toggleTimeline(this)">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="text-lg font-bold text-white group-hover:text-cyber-pink transition-colors">S1 Informatika & Ilmu Komputer</h3>
+                                <p class="text-sm font-mono text-slate-400">Universitas Teknologi Nasional</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 accordion-arrow"></i>
+                        </div>
+
+                        <div class="accordion-content hidden pt-4 border-t border-slate-800/80 text-sm text-slate-300 space-y-2">
+                            <p>• Lulus predikat Cum Laude (IPK 3.90/4.00). Fokus riset pada Interaksi Manusia & Komputer serta Rekayasa Perangkat Lunak.</p>
+                            <p>• Ketua Umum Komunitas Pemrograman Mahasiswa dan juara 1 Hackathon Nasional 2021.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION 05: KONTAK & MEDIA SOSIAL -->
+        <section id="contact" class="space-y-10">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <span class="text-cyber-cyan font-mono text-xs tracking-widest uppercase">&lt;SEKSI_05&gt;</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1">Mulai Kolaborasi</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md">
+                    Tertarik bekerjasama atau ingin menyapa? Kirim pesan langsung atau salin kontak resmi di bawah.
+                </p>
+            </div>
+
+            <!-- Contact Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Quick Copy Handles Left Column -->
+                <div class="lg:col-span-5 space-y-4">
+                    
+                    <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-6">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bolt text-cyber-cyan"></i>
+                            <span>Salin Kontak Cepat</span>
+                        </h3>
+
+                        <!-- Email Clipboard Tile -->
+                        <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-cyber-cyan/10 flex items-center justify-center text-cyber-cyan">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-mono text-slate-500 uppercase">ALAMAT EMAIL</div>
+                                    <div class="text-sm font-mono text-slate-200 font-bold" id="email-text">alex.dev@cybertech.id</div>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('alex.dev@cybertech.id', 'Email berhasil disalin ke clipboard!')" class="p-2.5 rounded-lg text-slate-400 hover:text-cyber-cyan hover:bg-slate-800 transition-colors" title="Salin Email">
+                                <i class="fa-regular fa-copy text-base"></i>
+                            </button>
+                        </div>
+
+                        <!-- Discord Clipboard Tile -->
+                        <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-cyber-purple/10 flex items-center justify-center text-cyber-purple">
+                                    <i class="fa-brands fa-discord"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-mono text-slate-500 uppercase">DISCORD USERNAME</div>
+                                    <div class="text-sm font-mono text-slate-200 font-bold">alex_cyber#0001</div>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('alex_cyber#0001', 'Username Discord berhasil disalin!')" class="p-2.5 rounded-lg text-slate-400 hover:text-cyber-purple hover:bg-slate-800 transition-colors" title="Salin Discord">
+                                <i class="fa-regular fa-copy text-base"></i>
+                            </button>
+                        </div>
+
+                        <!-- Social Networks Grid -->
+                        <div class="pt-2">
+                            <div class="text-xs font-mono text-slate-500 mb-3 uppercase">JEJARING SOSIAL RESMI</div>
+                            <div class="grid grid-cols-4 gap-3">
+                                <a href="https://github.com" target="_blank" class="p-3 rounded-xl glass-panel-interactive flex flex-col items-center justify-center gap-1 text-slate-300 hover:text-white">
+                                    <i class="fa-brands fa-github text-xl"></i>
+                                    <span class="text-[9px] font-mono">GitHub</span>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="p-3 rounded-xl glass-panel-interactive flex flex-col items-center justify-center gap-1 text-slate-300 hover:text-cyber-cyan">
+                                    <i class="fa-brands fa-linkedin text-xl"></i>
+                                    <span class="text-[9px] font-mono">LinkedIn</span>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="p-3 rounded-xl glass-panel-interactive flex flex-col items-center justify-center gap-1 text-slate-300 hover:text-cyber-pink">
+                                    <i class="fa-brands fa-instagram text-xl"></i>
+                                    <span class="text-[9px] font-mono">Instagram</span>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="p-3 rounded-xl glass-panel-interactive flex flex-col items-center justify-center gap-1 text-slate-300 hover:text-cyber-purple">
+                                    <i class="fa-brands fa-x-twitter text-xl"></i>
+                                    <span class="text-[9px] font-mono">Twitter/X</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Interactive Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="glass-panel p-6 sm:p-8 rounded-2xl border-slate-800 space-y-6">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Name Input -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-mono text-slate-400">NAMA LENGKAP *</label>
+                                <input type="text" required placeholder="cth. Budi Pratama" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyber-cyan transition-colors font-sans">
+                            </div>
+                            
+                            <!-- Email Input -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-mono text-slate-400">ALAMAT EMAIL *</label>
+                                <input type="email" required placeholder="budi@perusahaan.com" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyber-cyan transition-colors font-sans">
+                            </div>
+                        </div>
+
+                        <!-- Subject Input -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono text-slate-400">SUBJEK / PROYEK</label>
+                            <input type="text" placeholder="cth. Pengembangan Web SaaS / Konsultasi Cyber UI" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyber-cyan transition-colors font-sans">
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono text-slate-400">PESAN ANDA *</label>
+                            <textarea required rows="4" placeholder="Tuliskan ide proyek atau pertanyaan Anda di sini..." class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyber-cyan transition-colors font-sans resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl font-mono font-bold text-xs tracking-wider bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink text-black hover:opacity-95 transition-all flex items-center justify-center gap-2 shadow-neon-cyan">
+                            <span id="btn-text">KIRIM PESAN NEON</span>
+                            <i class="fa-solid fa-paper-plane" id="btn-icon"></i>
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-8 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-slate-500">
+            <div>
+                © 2026 ALEX THORNE. HAK CIPTA DILINDUNGI.
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    SISTEM ONLINE
+                </span>
+                <span>DESAIN FUTURISTIS HTML5 & TAILWIND</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE PROJECT DETAILS MODAL POPUP -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
+            <!-- Modal Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-panel flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Modal Visual Header -->
+            <div class="aspect-video rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 flex items-center justify-center p-4" id="modal-visual-container">
+                <svg class="w-full h-full text-cyber-cyan" viewBox="0 0 400 200" fill="none">
+                    <rect width="400" height="200" fill="#090d16"/>
+                    <circle cx="200" cy="100" r="50" stroke="#00f3ff" stroke-width="2"/>
+                </svg>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="space-y-4">
+                <h3 id="modal-title" class="text-2xl font-bold text-white"></h3>
+                <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed"></p>
+                
+                <div class="space-y-2">
+                    <div class="text-xs font-mono text-slate-400 uppercase">TEKNOLOGI YANG DIGUNAKAN:</div>
+                    <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <!-- Modal Actions -->
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                <a href="#" target="_blank" class="px-6 py-2.5 rounded-xl font-mono text-xs font-bold bg-cyber-cyan text-black hover:bg-white transition-colors flex items-center gap-2">
+                    <span>DEMO LANGSUNG</span>
+                    <i class="fa-solid fa-external-link"></i>
+                </a>
+                <button onclick="closeModal()" class="px-6 py-2.5 rounded-xl font-mono text-xs text-slate-400 hover:text-white transition-colors">
+                    TUTUP MODAL
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION BOX -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-panel border border-cyber-cyan/60 text-white px-5 py-3 rounded-2xl shadow-neon-cyan flex items-center gap-3 font-mono text-xs">
+        <i class="fa-solid fa-circle-check text-cyber-cyan text-base"></i>
+        <span id="toast-message">Notifikasi sistem</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* -------------------------------------------------------------
+           1. PARTICLES CANVAS CONSTELLATION NETWORK
+        ------------------------------------------------------------- */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        let mousePos = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            mousePos.x = e.clientX;
+            mousePos.y = e.clientY;
+        });
+
+        const particles = [];
+        const particleCount = Math.min(Math.floor(window.innerWidth / 18), 65);
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: (Math.random() - 0.5) * 0.6,
+                radius: Math.random() * 1.8 + 0.6,
+                color: Math.random() > 0.5 ? '#00f3ff' : '#a855f7'
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+
+                // Mouse Proximity Link
+                if (mousePos.x !== null) {
+                    let mdx = p.x - mousePos.x;
+                    let mdy = p.y - mousePos.y;
+                    let mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                    if (mdist < 140) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mousePos.x, mousePos.y);
+                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.25 - mdist / 600})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                    }
+                }
+
+                // Node Connection Lines
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 110) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(168, 85, 247, ${0.12 - dist / 900})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* -------------------------------------------------------------
+           2. CURSOR FOLLOW EFFECT
+        ------------------------------------------------------------- */
+        const cursorGlow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        });
+
+        /* -------------------------------------------------------------
+           3. DYNAMIC TYPEWRITER EFFECT
+        ------------------------------------------------------------- */
+        const roles = [
+            'Full-Stack Software Engineer',
+            'Cyber UI/UX Specialist',
+            'Pengembang Aplikasi Web',
+            'AI & Cloud Integrator'
+        ];
+        let roleIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriter');
+
+        function typeLoop() {
+            const currentRole = roles[roleIdx];
+
+            if (isDeleting) {
+                typewriterEl.textContent = currentRole.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typewriterEl.textContent = currentRole.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 35 : 75;
+
+            if (!isDeleting && charIdx === currentRole.length) {
+                typeSpeed = 2200; // Pause at end of text
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                roleIdx = (roleIdx + 1) % roles.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', typeLoop);
+
+        /* -------------------------------------------------------------
+           4. ANIMATED STATS COUNTER
+        ------------------------------------------------------------- */
+        const counters = document.querySelectorAll('.counter');
+        let counterTriggered = false;
+
+        function runCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const speed = target / 40;
+
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count) + "+";
+                        setTimeout(updateCount, 40);
+                    } else {
+                        counter.innerText = target + "+";
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const heroSec = document.getElementById('hero');
+            if (heroSec && window.scrollY < 600 && !counterTriggered) {
+                counterTriggered = true;
+                runCounters();
+            }
+        });
+        document.addEventListener('DOMContentLoaded', runCounters);
+
+        /* -------------------------------------------------------------
+           5. MOBILE MENU TOGGLE
+        ------------------------------------------------------------- */
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            if (mobileMenu.classList.contains('flex')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        /* -------------------------------------------------------------
+           6. TECH STACK FILTERING
+        ------------------------------------------------------------- */
+        const techFilterBtns = document.querySelectorAll('.tech-filter-btn');
+        const techCards = document.querySelectorAll('.tech-card');
+
+        techFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                techFilterBtns.forEach(b => {
+                    b.classList.remove('bg-cyber-cyan', 'text-black');
+                    b.classList.add('glass-panel', 'text-slate-300');
+                });
+                btn.classList.add('bg-cyber-cyan', 'text-black');
+                btn.classList.remove('glass-panel', 'text-slate-300');
+
+                const cat = btn.getAttribute('data-category');
+
+                techCards.forEach(card => {
+                    if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        /* -------------------------------------------------------------
+           7. PROJECT GRID FILTERING
+        ------------------------------------------------------------- */
+        const projFilterBtns = document.querySelectorAll('.proj-filter-btn');
+        const projCards = document.querySelectorAll('.proj-card');
+
+        projFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                projFilterBtns.forEach(b => {
+                    b.classList.remove('bg-cyber-pink', 'text-black');
+                    b.classList.add('glass-panel', 'text-slate-300');
+                });
+                btn.classList.add('bg-cyber-pink', 'text-black');
+                btn.classList.remove('glass-panel', 'text-slate-300');
+
+                const projType = btn.getAttribute('data-proj');
+
+                projCards.forEach(card => {
+                    if (projType === 'all' || card.getAttribute('data-type') === projType) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        /* -------------------------------------------------------------
+           8. TIMELINE ACCORDION TOGGLE
+        ------------------------------------------------------------- */
+        function toggleTimeline(element) {
+            const content = element.querySelector('.accordion-content');
+            const arrow = element.querySelector('.accordion-arrow');
+
+            content.classList.toggle('hidden');
+            if (content.classList.contains('hidden')) {
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        /* -------------------------------------------------------------
+           9. MODAL POPUP SYSTEM
+        ------------------------------------------------------------- */
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalTags = document.getElementById('modal-tags');
+
+        function openModal(title, description, tags, type) {
+            modalTitle.textContent = title;
+            modalDesc.textContent = description;
+
+            modalTags.innerHTML = '';
+            tags.forEach(t => {
+                const tagEl = document.createElement('span');
+                tagEl.className = 'px-3 py-1 rounded-md bg-slate-800 text-cyber-cyan font-mono text-xs border border-slate-700';
+                tagEl.textContent = t;
+                modalTags.appendChild(tagEl);
+            });
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        /* -------------------------------------------------------------
+           10. CLIPBOARD & TOAST NOTIFICATION
+        ------------------------------------------------------------- */
+        function copyToClipboard(text, message) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+            showToast(message);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = msg;
+
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3200);
+        }
+
+        /* -------------------------------------------------------------
+           11. CONTACT FORM SUBMISSION FEEDBACK
+        ------------------------------------------------------------- */
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnIcon = document.getElementById('btn-icon');
+
+            btnText.textContent = "MENGIRIM PESAN NEON...";
+            btnIcon.className = "fa-solid fa-spinner animate-spin";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btnText.textContent = "PESAN TERKIRIM SUKSES!";
+                btnIcon.className = "fa-solid fa-check";
+                btn.classList.remove('from-cyber-cyan', 'via-cyber-purple', 'to-cyber-pink');
+                btn.classList.add('bg-emerald-500');
+
+                showToast("Pesan Anda berhasil tertransmisi! Saya akan membalas segera.");
+
+                setTimeout(() => {
+                    e.target.reset();
+                    btnText.textContent = "KIRIM PESAN NEON";
+                    btnIcon.className = "fa-solid fa-paper-plane";
+                    btn.classList.add('from-cyber-cyan', 'via-cyber-purple', 'to-cyber-pink');
+                    btn.classList.remove('bg-emerald-500');
+                    btn.disabled = false;
+                }, 3500);
+            }, 1600);
+        }
+    </script>
+</body>
+</html>
