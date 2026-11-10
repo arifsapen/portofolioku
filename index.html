@@ -1439,5 +1439,13 @@
             }, 1600);
         }
     </script>
+    fetch('./content/profile.json')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('hero-name').innerText = data.name;
+    document.getElementById('hero-role').innerText = data.role;
+    document.getElementById('hero-bio').innerText = data.bio;
+    // Loop untuk menampilkan daftar proyek secara dinamis
+  });
 </body>
 </html>
