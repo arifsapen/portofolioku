@@ -2,8 +2,9 @@ backend:
   name: github
   repo: arifsapen.github.io/portofolioku
   branch: main
-
-media_folder: "assets/uploads"
+  base_url: https://decap-cms-oauth.netlify.app
+  auth_endpoint: /.netlify/functions/auth
+  media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
