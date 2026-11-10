@@ -1,1 +1,33 @@
-
+{
+  "name": "NEXUS DEV",
+  "role": "Fullstack Developer & Cyber Security Enthusiast",
+  "bio": "Mengembangkan aplikasi web modern berkinerja tinggi dengan estetika futuristik dan arsitektur kode yang bersih.",
+  "status": "Available for Freelance",
+  "contact": {
+    "email": "nexus@developer.com",
+    "discord": "nexus#1337",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com"
+  },
+  "skills": [
+    { "name": "React / Next.js", "category": "frontend", "level": "90%" },
+    { "name": "Node.js / Express", "category": "backend", "level": "85%" },
+    { "name": "Docker & CI/CD", "category": "devops", "level": "75%" }
+  ],
+  "projects": [
+    {
+      "title": "CyberShield AI",
+      "category": "ai",
+      "desc": "Platform deteksi ancaman siber berbasis kecerdasan buatan.",
+      "tech": ["Python", "TensorFlow", "React"],
+      "link": "https://github.com"
+    },
+    {
+      "title": "NeuraPay Wallet",
+      "category": "web",
+      "desc": "Dompet digital terdesentralisasi dengan keamanan tingkat tinggi.",
+      "tech": ["Web3", "Solidity", "Vue.js"],
+      "link": "https://github.com"
+    }
+  ]
+}
